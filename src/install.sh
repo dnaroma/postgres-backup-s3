@@ -5,8 +5,12 @@ set -o pipefail
 
 apk update
 
-# install pg_dump
-apk add postgresql-client
+# install pg_dump with specified PostgreSQL version
+if [ -n "$TARGETPOSTGRES" ]; then
+  apk add postgresql${TARGETPOSTGRES}-client
+else
+  apk add postgresql-client
+fi
 
 # install gpg
 apk add gnupg
