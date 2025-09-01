@@ -44,3 +44,8 @@ if [ -n "$S3_SECRET_ACCESS_KEY" ]; then
 fi
 export AWS_DEFAULT_REGION=$S3_REGION
 export PGPASSWORD=$POSTGRES_PASSWORD
+
+# Set default empty value for PGDUMP_RATE_LIMIT if not provided
+if [ -z "$PGDUMP_RATE_LIMIT" ]; then
+  PGDUMP_RATE_LIMIT=""
+fi
